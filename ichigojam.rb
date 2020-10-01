@@ -89,6 +89,15 @@ class Std15
     end
   end
 
+  def pset(x,y)
+    cx = x.div(2)
+    cy = y.div(2)
+    c = scr(cx,cy)
+    b = 2 ** ((y.modulo(2) << 1) + x.modulo(2))
+    d = ((c & 0xf0 == 0x80) ? c : 0x80) | b
+    set_char(cx,cy,d)
+  end
+
   def set_char(x,y,c)
     @buff[y*@buff_w+x] = c
   end
