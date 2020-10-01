@@ -28,6 +28,9 @@ class Kawakudari < Gosu::Window
       @std15.scroll()
 
       if @std15.scr(@x,5) != 0 then
+        @std15.locate(0,23)
+        @std15.putstr("Game Over...")
+        @std15.putnum(@frame)
         @running = false
       end
     end
