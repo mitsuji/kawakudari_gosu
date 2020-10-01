@@ -21,8 +21,24 @@ class Std15
 
   def putc(c)
     set_char(@cursor_x,@cursor_y,c)
+    if @cursor_x < @buff_w -1 then
+      @cursor_x += 1
+    else
+      if @cursor_y < @buff_h -1 then
+	@cursor_x = 0
+	@cursor_y += 1
+      end
+    end
   end
-  
+
+  def putstr(s)
+    s.bytes {|c| putc(c) }
+  end
+
+  def putnum(n)
+    putstr(n.to_s)
+  end
+
   def scr(x,y)
     return @buff[y*@buff_w+x]
   end
