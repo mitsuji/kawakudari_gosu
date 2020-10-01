@@ -35,7 +35,7 @@ class Kawakudari < Gosu::Window
   end
   
   def draw
-    @std15.pAppletDraw()
+    @std15.draw_screen()
   end
 end
 
