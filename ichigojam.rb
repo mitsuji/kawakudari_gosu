@@ -1,5 +1,10 @@
 
 class Std15
+  DIR_UP    = 0
+  DIR_RIGHT = 1
+  DIR_DOWN  = 2
+  DIR_LEFT  = 3
+
   CHAR_W = 8
   CHAR_H = 8
 
@@ -51,13 +56,34 @@ class Std15
     end
   end
 
-  def scroll()
+  def scroll(dir)
     for y in 0..@buff_h-1
       for x in 0..@buff_w-1
-        if y == @buff_h-1 then
-          set_char(x,y,0)
-        else
-          set_char(x,y,scr(x,y+1))
+        case dir
+        when DIR_UP then
+          if y == @buff_h-1 then
+            set_char(x,y,0)
+          else
+            set_char(x,y,scr(x,y+1))
+          end
+        when DIR_RIGHT then
+          if x == @buff_w-1 then
+            set_char(@buff_w-x-1,y,0)
+          else
+            set_char(@buff_w-x-1,y,scr((@buff_w-x-1)-1,y))
+          end
+        when DIR_DOWN then
+          if y == @buff_h-1 then
+            set_char(x,@buff_h-y-1,0)
+          else
+            set_char(x,@buff_h-y-1,scr(x,(@buff_h-y-1)-1))
+          end
+        when DIR_LEFT then
+          if x == @buff_w-1 then
+            set_char(x,y,0)
+          else
+            set_char(x,y,scr(x+1,y))
+          end
         end
       end
     end
