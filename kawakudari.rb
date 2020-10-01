@@ -25,7 +25,7 @@ class Kawakudari < Gosu::Window
       @std15.putc('0'.ord)
       @std15.locate(rand(32),23)
       @std15.putc('*'.ord)
-      @std15.scroll()
+      @std15.scroll(Std15::DIR_UP)
 
       if @std15.scr(@x,5) != 0 then
         @std15.locate(0,23)
@@ -33,6 +33,7 @@ class Kawakudari < Gosu::Window
         @std15.putnum(@frame)
         @running = false
       end
+
     end
     @frame +=1
   end
