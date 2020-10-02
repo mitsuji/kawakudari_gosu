@@ -94,7 +94,7 @@ class Std15
     cy = y.div(2)
     c = scr(cx,cy)
     b = 2 ** ((y.modulo(2) << 1) + x.modulo(2))
-    d = ((c & 0xf0 == 0x80) ? c : 0x80) | b
+    d = (((c & 0xf0) == 0x80) ? c : 0x80) | b
     set_char(cx,cy,d)
   end
 
